@@ -15,11 +15,9 @@ module Lucid.Servant (
 
 import           Data.Proxy
                  (Proxy)
-import           Data.Semigroup
-                 ((<>))
 import qualified Data.Text           as T
 import           Lucid
-                 (Attribute)
+                 (Attributes)
 import           Lucid.Html5
                  (href_)
 import           Servant.API
@@ -47,19 +45,19 @@ import           Servant.Links
 safeHref_
     :: (IsElem endpoint api, HasLink endpoint)
     => T.Text
-    -> Proxy api -> Proxy endpoint -> MkLink endpoint Attribute
+    -> Proxy api -> Proxy endpoint -> MkLink endpoint Attributes
 safeHref_ = safeLink' . linkHref_
 
 -- | @'safeLink' "/"@
 safeAbsHref_
     :: (IsElem endpoint api, HasLink endpoint)
-    => Proxy api -> Proxy endpoint -> MkLink endpoint Attribute
+    => Proxy api -> Proxy endpoint -> MkLink endpoint Attributes
 safeAbsHref_ = safeLink' linkAbsHref_
 
 -- | @'safeLink' ""@
 safeRelHref_
     :: (IsElem endpoint api, HasLink endpoint)
-    => Proxy api -> Proxy endpoint -> MkLink endpoint Attribute
+    => Proxy api -> Proxy endpoint -> MkLink endpoint Attributes
 safeRelHref_ = safeLink' linkRelHref_
 
 -- | Create an `href` attribute from a 'Link', with given base url.
@@ -67,7 +65,7 @@ safeRelHref_ = safeLink' linkRelHref_
 -- "servant" ensures that any 'Link' is valid within an API.
 -- This function ensures it is possible to navigate to that endpoint from
 -- a page which shares a root with that API.
-linkHref_ :: T.Text -> Link -> Attribute
+linkHref_ :: T.Text -> Link -> Attributes
 linkHref_ burl = href_ . (burl <+>) . toUrlPiece
 
 -- | Create an `href` attribute from a 'Link', with leading '/'.
@@ -75,14 +73,14 @@ linkHref_ burl = href_ . (burl <+>) . toUrlPiece
 -- "servant" ensures that any 'Link' is valid within an API.
 -- This function ensures it is possible to navigate to that endpoint from
 -- a page which shares a root with that API.
-linkAbsHref_ :: Link -> Attribute
+linkAbsHref_ :: Link -> Attributes
 linkAbsHref_ = linkHref_ "/"
 
 -- | Create an `href` attribute from a 'Link', as a relative link.
 --
 -- "servant" ensures that any 'Link' is valid within an API.
 -- Use this function if a relative link (no leading '/') is required.
-linkRelHref_ :: Link -> Attribute
+linkRelHref_ :: Link -> Attributes
 linkRelHref_ = href_ . toUrlPiece
 
 (<+>) :: T.Text -> T.Text -> T.Text

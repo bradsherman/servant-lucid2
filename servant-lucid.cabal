@@ -1,6 +1,6 @@
 cabal-version:       >=1.10
 name:                servant-lucid
-version:             0.9.0.6
+version:             0.10.0.0
 
 synopsis:            Servant support for lucid
 description:
@@ -31,7 +31,7 @@ library
                        Lucid.Servant
   build-depends:       base       >=4.9     && <5
                      , http-media >=0.6.4   && <0.9
-                     , lucid      >=2.11.20250303 && <2.13
+                     , lucid2
                      , text >=1.2.3.0 && <2.2
                      , servant    >=0.17    && <0.21
 
@@ -50,7 +50,7 @@ test-suite example
   ghc-options: -Wall
   build-depends:
       base
-    , lucid
+    , lucid2
     , servant-lucid
     , servant-server >=0.14     && <0.21
     , wai            >=3.0.3.0  && <3.3

@@ -28,10 +28,10 @@ api = Proxy
 
 apiLink_
     :: (IsElem endpoint API, HasLink endpoint)
-    => Proxy endpoint -> MkLink endpoint Attribute
+    => Proxy endpoint -> MkLink endpoint Attributes
 apiLink_ = safeAbsHref_ (Proxy :: Proxy API)
 
-stringLink_ :: Attribute
+stringLink_ :: Attributes
 stringLink_ = apiLink_ (Proxy :: Proxy ("string" :> Get '[HTML] String))
 
 server :: Server API
