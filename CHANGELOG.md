@@ -1,3 +1,7 @@
+# 0.9.0.7 (unreleased)
+
+- Support for GHC 9.12 (lucid >=2.11.20250303, servant >=0.20.3.0)
+
 # 0.9
 
 - Also accept content type without character set i.e `text/html`

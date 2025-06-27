@@ -20,7 +20,7 @@ copyright:           2015-2018 Servant Contributors
 category:            Web, Servant
 build-type:          Simple
 extra-source-files:  CHANGELOG.md
-tested-with: GHC ==8.6.5 || ==8.8.4 || ==8.10.7 || ==9.0.2 || ==9.2.8 || ==9.4.8 || ==9.6.6 || ==9.8.4
+tested-with: GHC==9.2.8, GHC==9.4.8, GHC==9.6.6, GHC==9.8.4, GHC==9.10.2, GHC==9.12.2
 
 source-repository head
   type: git
@@ -31,7 +31,7 @@ library
                        Lucid.Servant
   build-depends:       base       >=4.9     && <5
                      , http-media >=0.6.4   && <0.9
-                     , lucid      >=2.9.8   && <2.12
+                     , lucid      >=2.11.20250303 && <2.13
                      , text >=1.2.3.0 && <2.2
                      , servant    >=0.17    && <0.21
 
